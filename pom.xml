@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+      <groupId>com.ya0ne</groupId>
+      <artifactId>edriveParent</artifactId>
+      <version>1.0</version>
+      <relativePath>../edriveParent/pom.xml</relativePath>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>edriveNP</artifactId>
+  <packaging>jar</packaging>
+
+  <name>edriveNP (NMEAProcessor)</name>
+  <url>http://www.ya0ne.com</url>
+
+  <dependencies>
+    <dependency>
+        <groupId>com.ya0ne</groupId>
+        <artifactId>edriveCore</artifactId>
+        <version>1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.ya0ne.config</groupId>
+        <artifactId>edriveNPConfig</artifactId>
+        <version>1.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.bidib.jbidib.org.qbang.rxtx</groupId>
+        <artifactId>rxtxcomm</artifactId>
+        <version>2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.4</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+    </dependency>
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>2.2.11</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-core</artifactId>
+        <version>2.2.11</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>edriveNP</finalName>
+    <resources>
+      <resource> <directory>src/main/java</directory> <includes> <include>**/*xml</include> </includes> </resource>
+      <resource> <directory>src/main/resources</directory> <includes> <include>**/*xml</include> <include>**/*properties</include> <include>**/*MF</include> </includes> </resource>
+    </resources>
+    <plugins>
+        <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-compiler-plugin</artifactId>
+           <version>3.5.1</version>
+           <inherited>true</inherited>
+           <configuration>
+                 <source>1.8</source>
+                 <target>1.8</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainClass>com.ya0ne.np.NMEAProcessor</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.7</version>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.10</version>
+            <configuration>
+                <outputDirectory>
+                    ${project.build.directory}
+                </outputDirectory>
+            </configuration>
+        </plugin>
+    </plugins>
+  </build>
+</project>
